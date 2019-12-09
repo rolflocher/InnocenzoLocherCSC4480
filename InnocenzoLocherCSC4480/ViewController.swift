@@ -7,13 +7,30 @@
 //
 
 import Cocoa
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 class ViewController: NSViewController {
+    
+    var db: Firestore? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        FirebaseApp.configure()
+        Auth.auth().signInAnonymously { (authResult, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            self.db = Firestore.firestore()
+            self.db?.collection("firstCollection").addDocument(data: [
+                "field0": "in"
+            ])
+        }
+        
     }
 
     override var representedObject: Any? {
