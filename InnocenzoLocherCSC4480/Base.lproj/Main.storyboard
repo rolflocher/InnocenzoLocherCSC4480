@@ -735,6 +735,33 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtg-ZZ-o83">
+                                <rect key="frame" x="18" y="352" width="74" height="32"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" selectable="YES" title="Find Documents" id="hL5-Wd-NhV">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgl-zC-FXE">
+                                <rect key="frame" x="107" y="356" width="143" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="check" title="Item 1" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="dph-5R-hXQ" id="cEA-ec-T19">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="dJO-9a-WBI">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="dph-5R-hXQ"/>
+                                            <menuItem title="Item 2" id="XCs-iL-ahT"/>
+                                            <menuItem title="Item 3" id="Ws0-oi-ziA"/>
+                                        </items>
+                                    </menu>
+                                    <connections>
+                                        <action selector="conferenceSelected:" target="XfG-lQ-9wD" id="5rS-PE-0ou"/>
+                                    </connections>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nxv-Jc-2MR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="42h-f8-t5W"/>
@@ -744,6 +771,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="conferencePopUpButton" destination="Fgl-zC-FXE" id="FHv-ab-q0j"/>
                         <outlet property="documentCollectionView" destination="bGq-89-HBo" id="QWK-qH-VqL"/>
                     </connections>
                 </viewController>

@@ -21,6 +21,7 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource {
             }
             let scrollSize = CGSize(width: Int(frame.width), height: 50*doc.count/3)
             enclosingScrollView?.setFrameSize(scrollSize)
+            reloadData()
         }
     }
     var doc = [[String:Any]]()
