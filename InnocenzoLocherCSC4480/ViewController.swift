@@ -108,7 +108,7 @@ class ViewController: NSViewController {
             getPlayers(inTeam: item.title) { (players) in
                 self.playerPopUpButton.removeAllItems()
                 self.playerPopUpButton.addItem(withTitle: "Players")
-                for player in players { self.playerPopUpButton.addItem(withTitle: player.key) }
+                for player in players { self.playerPopUpButton.addItem(withTitle: player.value["Player"] as! String)}
                 self.players = players
             }
         }
@@ -185,6 +185,7 @@ class ViewController: NSViewController {
             for doc in snap.documents {
                 docDict[doc.documentID] = doc.data()
             }
+            print(docDict)
             completion(docDict)
         })
     }
