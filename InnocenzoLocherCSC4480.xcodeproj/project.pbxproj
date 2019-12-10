@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,9 @@
 		4CB73486239EDEF500F46B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB73485239EDEF500F46B6D /* Assets.xcassets */; };
 		4CB73489239EDEF500F46B6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB73487239EDEF500F46B6D /* Main.storyboard */; };
 		4CB73492239EE0B000F46B6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CB73491239EE0B000F46B6D /* GoogleService-Info.plist */; };
+		4CB73494239F15C400F46B6D /* DocumentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB73493239F15C400F46B6D /* DocumentCollectionView.swift */; };
+		4CB73497239F1A6800F46B6D /* DocumentCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB73495239F1A6800F46B6D /* DocumentCollectionViewItem.swift */; };
+		4CB73498239F1A6800F46B6D /* DocumentCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB73496239F1A6800F46B6D /* DocumentCollectionViewItem.xib */; };
 		EF03A01F9217EF820F2C8AB4 /* Pods_InnocenzoLocherCSC4480.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A66168AE272D3D5F822CA5 /* Pods_InnocenzoLocherCSC4480.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,9 @@
 		4CB7348A239EDEF500F46B6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CB7348B239EDEF500F46B6D /* InnocenzoLocherCSC4480.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InnocenzoLocherCSC4480.entitlements; sourceTree = "<group>"; };
 		4CB73491239EE0B000F46B6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4CB73493239F15C400F46B6D /* DocumentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionView.swift; sourceTree = "<group>"; };
+		4CB73495239F1A6800F46B6D /* DocumentCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewItem.swift; sourceTree = "<group>"; };
+		4CB73496239F1A6800F46B6D /* DocumentCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentCollectionViewItem.xib; sourceTree = "<group>"; };
 		5052B8F9F22E5F7D1B89B50A /* Pods-InnocenzoLocherCSC4480.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocenzoLocherCSC4480.debug.xcconfig"; path = "Target Support Files/Pods-InnocenzoLocherCSC4480/Pods-InnocenzoLocherCSC4480.debug.xcconfig"; sourceTree = "<group>"; };
 		F22CCC5C5F5175360C2875E8 /* Pods-InnocenzoLocherCSC4480.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnocenzoLocherCSC4480.release.xcconfig"; path = "Target Support Files/Pods-InnocenzoLocherCSC4480/Pods-InnocenzoLocherCSC4480.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +53,6 @@
 				5052B8F9F22E5F7D1B89B50A /* Pods-InnocenzoLocherCSC4480.debug.xcconfig */,
 				F22CCC5C5F5175360C2875E8 /* Pods-InnocenzoLocherCSC4480.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,6 +79,9 @@
 			children = (
 				4CB73481239EDEF300F46B6D /* AppDelegate.swift */,
 				4CB73483239EDEF300F46B6D /* ViewController.swift */,
+				4CB73493239F15C400F46B6D /* DocumentCollectionView.swift */,
+				4CB73495239F1A6800F46B6D /* DocumentCollectionViewItem.swift */,
+				4CB73496239F1A6800F46B6D /* DocumentCollectionViewItem.xib */,
 				4CB73485239EDEF500F46B6D /* Assets.xcassets */,
 				4CB73487239EDEF500F46B6D /* Main.storyboard */,
 				4CB7348A239EDEF500F46B6D /* Info.plist */,
@@ -151,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB73498239F1A6800F46B6D /* DocumentCollectionViewItem.xib in Resources */,
 				4CB73486239EDEF500F46B6D /* Assets.xcassets in Resources */,
 				4CB73489239EDEF500F46B6D /* Main.storyboard in Resources */,
 				4CB73492239EE0B000F46B6D /* GoogleService-Info.plist in Resources */,
@@ -206,7 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB73497239F1A6800F46B6D /* DocumentCollectionViewItem.swift in Sources */,
 				4CB73484239EDEF300F46B6D /* ViewController.swift in Sources */,
+				4CB73494239F15C400F46B6D /* DocumentCollectionView.swift in Sources */,
 				4CB73482239EDEF300F46B6D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

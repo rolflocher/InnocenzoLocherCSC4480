@@ -709,11 +709,47 @@
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="792" height="397"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxv-Jc-2MR">
+                                <rect key="frame" x="20" y="0.0" width="752" height="336"/>
+                                <clipView key="contentView" drawsBackground="NO" id="XWo-QF-Sld">
+                                    <rect key="frame" x="0.0" y="0.0" width="752" height="336"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="bGq-89-HBo" customClass="DocumentCollectionView" customModule="InnocenzoLocherCSC4480" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="752" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="m8W-Nl-tq9">
+                                                <size key="itemSize" width="250" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="0KZ-eu-ERL">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="HVf-RJ-hYn">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Nxv-Jc-2MR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="42h-f8-t5W"/>
+                            <constraint firstAttribute="trailing" secondItem="Nxv-Jc-2MR" secondAttribute="trailing" constant="20" id="HvY-I3-4Ls"/>
+                            <constraint firstItem="Nxv-Jc-2MR" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="61" id="Pnu-pW-bde"/>
+                            <constraint firstAttribute="bottom" secondItem="Nxv-Jc-2MR" secondAttribute="bottom" id="sZM-lf-a0Y"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="documentCollectionView" destination="bGq-89-HBo" id="QWK-qH-VqL"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="877"/>
+            <point key="canvasLocation" x="196" y="876.5"/>
         </scene>
     </scenes>
 </document>

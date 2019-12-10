@@ -13,6 +13,9 @@ import FirebaseFirestore
 
 class ViewController: NSViewController {
     
+    @IBOutlet var documentCollectionView: DocumentCollectionView!
+    
+    
     var db: Firestore? = nil
 
     override func viewDidLoad() {
@@ -26,16 +29,18 @@ class ViewController: NSViewController {
             }
             
             self.db = Firestore.firestore()
-            self.db?.collection("firstCollection").addDocument(data: [
-                "field0": "in"
-            ])
+//            self.db?.collection("firstCollection").addDocument(data: [
+//                "field0": "in"
+//            ])
         }
         
+        documentCollectionView.setup()
+        documentCollectionView.data = ["Key":"Value", "Key0":"Value", "Key1":"Value", "Key2":"Value"]
     }
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            
         }
     }
 
