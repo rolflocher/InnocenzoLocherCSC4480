@@ -808,6 +808,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="playerSelected:" target="XfG-lQ-9wD" id="qFu-IB-nlA"/>
+                                </connections>
                             </popUpButton>
                         </subviews>
                         <constraints>
