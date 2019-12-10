@@ -17,9 +17,12 @@ class ViewController: NSViewController {
     
     @IBOutlet var conferencePopUpButton: NSPopUpButton!
     
+    @IBOutlet var divisionPopUpButton: NSPopUpButton!
+    
     var db: Firestore? = nil
     
     var conferences = [String:[String:Any]]()
+    var divisions = [String:[String:Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +51,31 @@ class ViewController: NSViewController {
         }
         if item.title == "Conference" {
             documentCollectionView.data = [:]
+            clearDivisions()
             // clear popupbuttons to the right
         }
         else {
             documentCollectionView.data = conferences[item.title] ?? [:]
-            // get divisions with item.title as conference name
+            getDivisions(inConference: item.title) { (divisions) in
+                self.divisionPopUpButton.removeAllItems()
+                self.divisionPopUpButton.addItem(withTitle: "Division")
+                for div in divisions { self.divisionPopUpButton.addItem(withTitle: div.key) }
+                self.divisions = divisions
+            }
+        }
+    }
+    
+    @IBAction func divisionSelected(_ sender: Any) {
+        guard let item = divisionPopUpButton.selectedItem else {
+            return
+        }
+        if item.title == "Division" {
+            documentCollectionView.data = [:]
+            // clear popupbuttons to the right
+        }
+        else {
+            documentCollectionView.data = divisions[item.title] ?? [:]
+            // get teams with item.title as division name
         }
     }
     
@@ -68,6 +91,25 @@ class ViewController: NSViewController {
             }
             completion(docDict)
         })
+    }
+    
+    func getDivisions(inConference conf: String, completion: @escaping ([String:[String:Any]]) -> Void) {
+        db?.collection("Divisions").whereField("conference", isEqualTo: conf).getDocuments(completion: { (snapshot, error) in
+            guard let snap = snapshot else {
+                print(error!)
+                return
+            }
+            var docDict = [String:[String:Any]]()
+            for doc in snap.documents {
+                docDict[doc.documentID] = doc.data()
+            }
+            completion(docDict)
+        })
+    }
+    
+    func clearDivisions() {
+        divisionPopUpButton.removeAllItems()
+        divisionPopUpButton.addItem(withTitle: "Division")
     }
 
     override var representedObject: Any? {

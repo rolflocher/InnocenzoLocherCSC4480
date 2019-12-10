@@ -745,20 +745,34 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgl-zC-FXE">
-                                <rect key="frame" x="107" y="356" width="143" height="25"/>
+                                <rect key="frame" x="107" y="350" width="143" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="check" title="Item 1" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="dph-5R-hXQ" id="cEA-ec-T19">
+                                <popUpButtonCell key="cell" type="check" title="Conference" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="dph-5R-hXQ" id="cEA-ec-T19">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <menu key="menu" id="dJO-9a-WBI">
                                         <items>
-                                            <menuItem title="Item 1" state="on" id="dph-5R-hXQ"/>
-                                            <menuItem title="Item 2" id="XCs-iL-ahT"/>
-                                            <menuItem title="Item 3" id="Ws0-oi-ziA"/>
+                                            <menuItem title="Conference" state="on" id="dph-5R-hXQ"/>
                                         </items>
                                     </menu>
                                     <connections>
                                         <action selector="conferenceSelected:" target="XfG-lQ-9wD" id="5rS-PE-0ou"/>
+                                    </connections>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p66-c8-sD6">
+                                <rect key="frame" x="254" y="350" width="139" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="check" title="Division" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="399-sQ-goa" id="1v7-xT-aYC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="Da9-Df-Eoh">
+                                        <items>
+                                            <menuItem title="Division" state="on" id="399-sQ-goa"/>
+                                        </items>
+                                    </menu>
+                                    <connections>
+                                        <action selector="divisionSelected:" target="XfG-lQ-9wD" id="pPp-BV-HEC"/>
                                     </connections>
                                 </popUpButtonCell>
                             </popUpButton>
@@ -772,6 +786,7 @@
                     </view>
                     <connections>
                         <outlet property="conferencePopUpButton" destination="Fgl-zC-FXE" id="FHv-ab-q0j"/>
+                        <outlet property="divisionPopUpButton" destination="p66-c8-sD6" id="4kJ-zh-x1R"/>
                         <outlet property="documentCollectionView" destination="bGq-89-HBo" id="QWK-qH-VqL"/>
                     </connections>
                 </viewController>
