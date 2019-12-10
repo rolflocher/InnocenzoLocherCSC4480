@@ -19,6 +19,8 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource {
                     "value": value
                 ])
             }
+            let scrollSize = CGSize(width: Int(frame.width), height: 50*doc.count/3)
+            enclosingScrollView?.setFrameSize(scrollSize)
         }
     }
     var doc = [[String:Any]]()
@@ -33,7 +35,7 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource {
         guard let item = makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DocumentCollectionViewItem"), for: indexPath) as? DocumentCollectionViewItem else {
             return NSCollectionViewItem()
         }
-        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!)
+        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!) + ":"
         item.valueTextField.stringValue = String(describing: doc[indexPath.item]["value"]!)
         return item
     }

@@ -20,7 +20,7 @@
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T2S-lW-SJn">
                     <rect key="frame" x="8" y="17" width="114" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Rr9-sA-rVt">
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="Rr9-sA-rVt">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +28,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zeG-y7-l1n">
                     <rect key="frame" x="128" y="17" width="114" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Label" id="hL8-Pj-Kbf">
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="hL8-Pj-Kbf">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
