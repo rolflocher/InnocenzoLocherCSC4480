@@ -119,13 +119,13 @@ class ViewController: NSViewController, DocumentItemDelegate {
         guard let item = playerPopUpButton.selectedItem else {
             return
         }
-        selectedTable = .Players
-        selectedDocId = players[item.title]!["uid"] as! String
         if item.title == "Player" {
             documentCollectionView.data = [:]
         }
         else {
             documentCollectionView.data = players[item.title] ?? [:]
+            selectedTable = .Players
+            selectedDocId = players[item.title]!["uid"] as! String
         }
 
     }
