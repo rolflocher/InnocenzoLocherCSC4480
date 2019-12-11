@@ -33,6 +33,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="valueTextFieldEnterTapped:" target="VTw-1S-9Oe" id="35r-DH-Syv"/>
+                    </connections>
                 </textField>
             </subviews>
             <constraints>

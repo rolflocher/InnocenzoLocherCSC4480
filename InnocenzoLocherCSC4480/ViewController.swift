@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, DocumentItemDelegate {
     
     @IBOutlet var documentCollectionView: DocumentCollectionView!
     
@@ -23,6 +23,9 @@ class ViewController: NSViewController {
     
     var conferences = [String:[String:Any]]()
     var divisions = [String:[String:Any]]()
+    
+    var selectedDocId = String()
+    var selectedTable = DocLocation.Conference
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +46,15 @@ class ViewController: NSViewController {
             }
         }
         documentCollectionView.setup()
+        documentCollectionView.parentDelegate = self
     }
     
     @IBAction func conferenceSelected(_ sender: Any) {
         guard let item = conferencePopUpButton.selectedItem else {
             return
         }
+        selectedTable = .Conference
+        selectedDocId = item.title
         if item.title == "Conference" {
             documentCollectionView.data = [:]
             clearDivisions()
@@ -69,6 +75,8 @@ class ViewController: NSViewController {
         guard let item = divisionPopUpButton.selectedItem else {
             return
         }
+        selectedTable = .Division
+        selectedDocId = item.title
         if item.title == "Division" {
             documentCollectionView.data = [:]
             // clear popupbuttons to the right
@@ -111,6 +119,11 @@ class ViewController: NSViewController {
         divisionPopUpButton.removeAllItems()
         divisionPopUpButton.addItem(withTitle: "Division")
     }
+    
+    func postFieldUpdate(key: String, value: String, completion: @escaping () -> Void) {
+        print("tried to update doc: \(selectedDocId) in table \(selectedTable) with key: \(key) and value: \(value)")
+        completion()
+    }
 
     override var representedObject: Any? {
         didSet {
@@ -119,5 +132,12 @@ class ViewController: NSViewController {
     }
 
 
+}
+
+enum DocLocation {
+    case Conference
+    case Division
+    case Team
+    case Player
 }
 
