@@ -8,7 +8,9 @@
 
 import Cocoa
 
-class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource {
+class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCollectionViewDelegate {
+    
+    weak var parentDelegate: DocumentItemDelegate? = nil
     
     var data = [String:Any]() {
         didSet {
@@ -36,8 +38,9 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource {
         guard let item = makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DocumentCollectionViewItem"), for: indexPath) as? DocumentCollectionViewItem else {
             return NSCollectionViewItem()
         }
-        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!) + ":"
+        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!)
         item.valueTextField.stringValue = String(describing: doc[indexPath.item]["value"]!)
+        item.delegate = parentDelegate
         return item
     }
         
