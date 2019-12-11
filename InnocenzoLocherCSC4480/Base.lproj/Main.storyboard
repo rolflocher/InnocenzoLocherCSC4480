@@ -776,6 +776,42 @@
                                     </connections>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sat-Ga-Xok">
+                                <rect key="frame" x="397" y="350" width="139" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="check" title="Team" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="AoP-Z5-AQM" id="u0D-ui-KfK">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="7A6-AV-Nrl">
+                                        <items>
+                                            <menuItem title="Team" state="on" id="AoP-Z5-AQM"/>
+                                            <menuItem title="Item 2" id="bNi-s4-m0Z"/>
+                                            <menuItem title="Item 3" id="AgI-Z4-WrS"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="teamSelected:" target="XfG-lQ-9wD" id="zGu-QB-9Yw"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ExX-wE-2Up">
+                                <rect key="frame" x="540" y="350" width="139" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="check" title="Player" bezelStyle="regularSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" selectedItem="iZ8-OH-IjB" id="DhZ-Hp-IlN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="SQE-uv-sdt">
+                                        <items>
+                                            <menuItem title="Player" state="on" id="iZ8-OH-IjB"/>
+                                            <menuItem title="Item 2" id="Nph-JP-hhs"/>
+                                            <menuItem title="Item 3" id="h3C-VQ-dV2"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="playerSelected:" target="XfG-lQ-9wD" id="qFu-IB-nlA"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nxv-Jc-2MR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="42h-f8-t5W"/>
@@ -788,6 +824,8 @@
                         <outlet property="conferencePopUpButton" destination="Fgl-zC-FXE" id="FHv-ab-q0j"/>
                         <outlet property="divisionPopUpButton" destination="p66-c8-sD6" id="4kJ-zh-x1R"/>
                         <outlet property="documentCollectionView" destination="bGq-89-HBo" id="QWK-qH-VqL"/>
+                        <outlet property="playerPopUpButton" destination="ExX-wE-2Up" id="3UO-fZ-flc"/>
+                        <outlet property="teamPopUpButton" destination="sat-Ga-Xok" id="OPe-AF-AP9"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
