@@ -125,6 +125,8 @@ class ViewController: NSViewController, DocumentItemDelegate {
         guard let item = playerPopUpButton.selectedItem else {
             return
         }
+        selectedTable = .Players
+        selectedDocId = players[item.title]!["uid"] as! String
         if item.title == "Player" {
             documentCollectionView.data = [:]
         }
@@ -185,6 +187,7 @@ class ViewController: NSViewController, DocumentItemDelegate {
             var docDict = [String:[String:Any]]()
             for doc in snap.documents {
                 docDict[doc["Player"] as! String] = doc.data()
+                docDict[doc["Player"] as! String]!["uid"] = doc.documentID
             }
             completion(docDict)
         })
