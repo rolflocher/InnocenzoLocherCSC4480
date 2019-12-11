@@ -183,7 +183,7 @@ class ViewController: NSViewController {
             }
             var docDict = [String:[String:Any]]()
             for doc in snap.documents {
-                docDict[doc.documentID] = doc.data()
+                docDict[doc["Player"] as! String] = doc.data()
             }
             print(docDict)
             completion(docDict)
