@@ -61,17 +61,15 @@ class ViewController: NSViewController, DocumentItemDelegate {
         }
         selectedTable = .Conferences
         selectedDocId = item.title
+        clearDivisions()
+        clearTeams()
+        clearPlayers()
         if item.title == "Conference" {
             documentCollectionView.data = [:]
-            clearDivisions()
-            clearTeams()
-            clearPlayers()
         }
         else {
             documentCollectionView.data = conferences[item.title] ?? [:]
             getDivisions(inConference: item.title) { (divisions) in
-                self.divisionPopUpButton.removeAllItems()
-                self.divisionPopUpButton.addItem(withTitle: "Division")
                 for div in divisions { self.divisionPopUpButton.addItem(withTitle: div.key) }
                 self.divisions = divisions
             }
@@ -84,16 +82,14 @@ class ViewController: NSViewController, DocumentItemDelegate {
         }
         selectedTable = .Divisions
         selectedDocId = item.title
+        clearTeams()
+        clearPlayers()
         if item.title == "Division" {
             documentCollectionView.data = [:]
-            clearTeams()
-            clearPlayers()
         }
         else {
             documentCollectionView.data = divisions[item.title] ?? [:]
             getTeams(inDivision: item.title) { (teams) in
-                self.teamPopUpButton.removeAllItems()
-                self.teamPopUpButton.addItem(withTitle: "Team")
                 for team in teams { self.teamPopUpButton.addItem(withTitle: team.key) }
                 self.teams = teams
             }// get teams with item.title as division name
@@ -106,15 +102,13 @@ class ViewController: NSViewController, DocumentItemDelegate {
         }
         selectedTable = .Teams
         selectedDocId = item.title
+        clearPlayers()
         if item.title == "Team" {
             documentCollectionView.data = [:]
-            clearPlayers()
         }
         else {
             documentCollectionView.data = teams[item.title] ?? [:]
             getPlayers(inTeam: item.title) { (players) in
-                self.playerPopUpButton.removeAllItems()
-                self.playerPopUpButton.addItem(withTitle: "Player")
                 for player in players { self.playerPopUpButton.addItem(withTitle: player.value["Player"] as! String)}
                 self.players = players
             }
