@@ -93,7 +93,7 @@ class ViewController: NSViewController, DocumentItemDelegate {
             documentCollectionView.data = divisions[item.title] ?? [:]
             getTeams(inDivision: item.title) { (teams) in
                 self.teamPopUpButton.removeAllItems()
-                self.teamPopUpButton.addItem(withTitle: "Teams")
+                self.teamPopUpButton.addItem(withTitle: "Team")
                 for team in teams { self.teamPopUpButton.addItem(withTitle: team.key) }
                 self.teams = teams
             }// get teams with item.title as division name
@@ -104,6 +104,8 @@ class ViewController: NSViewController, DocumentItemDelegate {
         guard let item = teamPopUpButton.selectedItem else {
             return
         }
+        selectedTable = .Teams
+        selectedDocId = item.title
         if item.title == "Team" {
             documentCollectionView.data = [:]
             clearPlayers()
@@ -112,7 +114,7 @@ class ViewController: NSViewController, DocumentItemDelegate {
             documentCollectionView.data = teams[item.title] ?? [:]
             getPlayers(inTeam: item.title) { (players) in
                 self.playerPopUpButton.removeAllItems()
-                self.playerPopUpButton.addItem(withTitle: "Players")
+                self.playerPopUpButton.addItem(withTitle: "Player")
                 for player in players { self.playerPopUpButton.addItem(withTitle: player.value["Player"] as! String)}
                 self.players = players
             }
