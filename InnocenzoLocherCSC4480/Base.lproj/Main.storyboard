@@ -785,8 +785,6 @@
                                     <menu key="menu" id="7A6-AV-Nrl">
                                         <items>
                                             <menuItem title="Team" state="on" id="AoP-Z5-AQM"/>
-                                            <menuItem title="Item 2" id="bNi-s4-m0Z"/>
-                                            <menuItem title="Item 3" id="AgI-Z4-WrS"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -803,8 +801,6 @@
                                     <menu key="menu" id="SQE-uv-sdt">
                                         <items>
                                             <menuItem title="Player" state="on" id="iZ8-OH-IjB"/>
-                                            <menuItem title="Item 2" id="Nph-JP-hhs"/>
-                                            <menuItem title="Item 3" id="h3C-VQ-dV2"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
