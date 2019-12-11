@@ -29,7 +29,7 @@ class ViewController: NSViewController, DocumentItemDelegate {
     var divisions = [String:[String:Any]]()
     
     var selectedDocId = String()
-    var selectedTable = DocLocation.Conference
+    var selectedTable = DocLocation.Conferences
   
     var teams = [String:[String:Any]]()
     var players = [String:[String:Any]]()
@@ -43,7 +43,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
                 print(error)
                 return
             }
-            
             self.db = Firestore.firestore()
             self.getConferences { (conferences) in
                 self.conferencePopUpButton.removeAllItems()
@@ -60,14 +59,13 @@ class ViewController: NSViewController, DocumentItemDelegate {
         guard let item = conferencePopUpButton.selectedItem else {
             return
         }
-        selectedTable = .Conference
+        selectedTable = .Conferences
         selectedDocId = item.title
         if item.title == "Conference" {
             documentCollectionView.data = [:]
             clearDivisions()
             clearTeams()
             clearPlayers()
-            // clear popupbuttons to the right
         }
         else {
             documentCollectionView.data = conferences[item.title] ?? [:]
@@ -84,13 +82,12 @@ class ViewController: NSViewController, DocumentItemDelegate {
         guard let item = divisionPopUpButton.selectedItem else {
             return
         }
-        selectedTable = .Division
+        selectedTable = .Divisions
         selectedDocId = item.title
         if item.title == "Division" {
             documentCollectionView.data = [:]
             clearTeams()
             clearPlayers()
-            // clear popupbuttons to the right
         }
         else {
             documentCollectionView.data = divisions[item.title] ?? [:]
@@ -110,7 +107,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
         if item.title == "Team" {
             documentCollectionView.data = [:]
             clearPlayers()
-            // clear popupbuttons to the right
         }
         else {
             documentCollectionView.data = teams[item.title] ?? [:]
@@ -132,12 +128,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
         }
         else {
             documentCollectionView.data = players[item.title] ?? [:]
-            //getPlayers(inTeam: item.title) { (players) in
-              //  self.playerPopUpButton.removeAllItems()
-                //self.playerPopUpButton.addItem(withTitle: "Players")
-               // for player in players { self.playerPopUpButton.addItem(withTitle: player.key) }
-                //self.players = players
-           // }
         }
 
     }
@@ -194,7 +184,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
             for doc in snap.documents {
                 docDict[doc.documentID] = doc.data()
             }
-            print(docDict)
             completion(docDict)
         })
     }
@@ -204,9 +193,11 @@ class ViewController: NSViewController, DocumentItemDelegate {
         divisionPopUpButton.addItem(withTitle: "Division")
     }
     
-    func postFieldUpdate(key: String, value: String, completion: @escaping () -> Void) {
-        print("tried to update doc: \(selectedDocId) in table \(selectedTable) with key: \(key) and value: \(value)")
-        completion()
+    func postFieldUpdate(key: String, value: String) {
+        view.window?.makeFirstResponder(view)
+        db?.collection("\(selectedTable)").document(selectedDocId).updateData([
+            key: value
+        ])
     }
   
     func clearTeams() {
@@ -224,14 +215,12 @@ class ViewController: NSViewController, DocumentItemDelegate {
             
         }
     }
-
-
 }
 
 enum DocLocation {
-    case Conference
-    case Division
-    case Team
-    case Player
+    case Conferences
+    case Divisions
+    case Teams
+    case Players
 }
 

@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol DocumentItemDelegate: class {
-    func postFieldUpdate(key: String, value: String, completion: @escaping ()->Void)
+    func postFieldUpdate(key: String, value: String)
 }
 
 class DocumentCollectionViewItem: NSCollectionViewItem {
@@ -19,11 +19,6 @@ class DocumentCollectionViewItem: NSCollectionViewItem {
     @IBOutlet var valueTextField: NSTextField!
     
     weak var delegate: DocumentItemDelegate? = nil
-    
-    var test: String = "" //{
-//        get {return self.representedObject as! String}
-//        set {}
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +30,7 @@ class DocumentCollectionViewItem: NSCollectionViewItem {
     }
     
     @IBAction func valueTextFieldEnterTapped(_ sender: Any) {
-        //valueTextField.isEnabled = false
-        delegate?.postFieldUpdate(key: keyTextField.stringValue, value: valueTextField.stringValue, completion: {
-            //self.valueTextField.isEnabled = true
-            //self.valueTextField.resignFirstResponder()
-//            (sender as? NSTextField)?.resignFirstResponder()
-            //self.valueTextField.resignFirstResponder()
-            //self.view.window?.becomeFirstResponder()
-            self.becomeFirstResponder()
-        })
-        
-//        print(test)
-//
-//        print(super.collectionView ?? "no super collectionview")
-//        print((collectionView as? DocumentCollectionView) ?? "could not cast")
-//        (collectionView as? DocumentCollectionView)?.postFieldUpdate(key: keyTextField.stringValue, value: valueTextField.stringValue, completion: {
-//            self.valueTextField.isEditable = true
-//        })
+        delegate?.postFieldUpdate(key: keyTextField.stringValue, value: valueTextField.stringValue)
     }
     
 }

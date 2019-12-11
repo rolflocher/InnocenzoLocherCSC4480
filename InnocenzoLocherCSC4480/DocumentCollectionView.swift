@@ -30,10 +30,6 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCo
     
     var flow = NSCollectionViewFlowLayout()
     
-    func postFieldUpdate(key: String, value: String, completion: @escaping ()->Void) {
-        print("yes sir")
-    }
-    
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return doc.count
     }
@@ -42,10 +38,9 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCo
         guard let item = makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DocumentCollectionViewItem"), for: indexPath) as? DocumentCollectionViewItem else {
             return NSCollectionViewItem()
         }
-        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!) + ":"
+        item.keyTextField.stringValue = String(describing: doc[indexPath.item]["key"]!)
         item.valueTextField.stringValue = String(describing: doc[indexPath.item]["value"]!)
         item.delegate = parentDelegate
-        item.test = "oook"
         return item
     }
         
