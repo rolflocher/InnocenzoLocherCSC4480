@@ -27,12 +27,11 @@ class ViewController: NSViewController, DocumentItemDelegate {
     
     var conferences = [String:[String:Any]]()
     var divisions = [String:[String:Any]]()
+    var teams = [String:[String:Any]]()
+    var players = [String:[String:Any]]()
     
     var selectedDocId = String()
     var selectedTable = DocLocation.Conferences
-  
-    var teams = [String:[String:Any]]()
-    var players = [String:[String:Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +44,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
             }
             self.db = Firestore.firestore()
             self.getConferences { (conferences) in
-                self.conferencePopUpButton.removeAllItems()
-                self.conferencePopUpButton.addItem(withTitle: "Conference")
                 for conf in conferences { self.conferencePopUpButton.addItem(withTitle: conf.key) }
                 self.conferences = conferences
             }
@@ -92,7 +89,7 @@ class ViewController: NSViewController, DocumentItemDelegate {
             getTeams(inDivision: item.title) { (teams) in
                 for team in teams { self.teamPopUpButton.addItem(withTitle: team.key) }
                 self.teams = teams
-            }// get teams with item.title as division name
+            }
         }
     }
     
@@ -127,7 +124,6 @@ class ViewController: NSViewController, DocumentItemDelegate {
             selectedTable = .Players
             selectedDocId = players[item.title]!["uid"] as! String
         }
-
     }
     
     func getConferences(completion: @escaping ([String:[String:Any]]) -> Void) {
@@ -187,16 +183,16 @@ class ViewController: NSViewController, DocumentItemDelegate {
         })
     }
     
-    func clearDivisions() {
-        divisionPopUpButton.removeAllItems()
-        divisionPopUpButton.addItem(withTitle: "Division")
-    }
-    
     func postFieldUpdate(key: String, value: String) {
         view.window?.makeFirstResponder(view)
         db?.collection("\(selectedTable)").document(selectedDocId).updateData([
             key: value
         ])
+    }
+    
+    func clearDivisions() {
+        divisionPopUpButton.removeAllItems()
+        divisionPopUpButton.addItem(withTitle: "Division")
     }
   
     func clearTeams() {
