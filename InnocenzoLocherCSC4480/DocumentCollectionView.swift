@@ -15,7 +15,8 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCo
     var data = [String:Any]() {
         didSet {
             doc = []
-            for (key, value) in data {
+            let sortedDict = Array(data).sorted(by: {$0.key < $1.key})
+            for (key, value) in sortedDict {
                 doc.append([
                     "key": key,
                     "value": value
@@ -30,8 +31,12 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCo
     
     var flow = NSCollectionViewFlowLayout()
     
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return doc.count
+        return section == 0 ? doc.count : 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -54,6 +59,7 @@ class DocumentCollectionView: NSCollectionView, NSCollectionViewDataSource, NSCo
         flow.minimumInteritemSpacing = 10
         flow.minimumLineSpacing = 10
         flow.itemSize = NSSize(width: frame.width/CGFloat(numItemsPerRow) - flow.minimumInteritemSpacing * CGFloat(numItemsPerRow), height: 50)
+        flow.sectionInset = NSEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         collectionViewLayout = flow
     }
     
